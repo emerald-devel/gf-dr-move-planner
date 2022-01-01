@@ -24,6 +24,9 @@ Just download the thing and open the index.html file in your browser. No interne
 - This tool will not prevent EN syndrome.
 - This tool will not cure EN syndrome, either.
 - Enemy movement prediction is not available when RNG enemy movement is involved. Get over it.
+- This tool will be updated to be usable with current EN ranking maps.
+- If you need an older version, then look through the old releases.
+- If you need this tool updated for a new event that hasn't yet run on EN, then write your own fucking code.
 
 ## Other
 
