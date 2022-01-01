@@ -34,6 +34,11 @@ const factions = [
 		id: 0,
 		name: 'Paradeus',
 		color: '#FFEE00'
+	},
+	{
+		id: 100,
+		name: 'Unknown',
+		color: '#EE0000'
 	}
 ];
 
@@ -68,7 +73,7 @@ const config = {
 	margin: 50,
 	turn: 1,
 	calculate_button: {
-		position: [-350, -1000],
+		position: [-1646, -700],
 		width: 1000,
 		height: 250,
 		scale: 1,
@@ -344,7 +349,7 @@ function updateCanvas(nodes) {
 		ctx.fillText('#' + (index + 1), calculateX(node.coordinates[0]), calculateY(node.coordinates[1]) + config.radius * 0.8);
 
 		ctx.stroke();
-		ctx.beginPath();
+		/*ctx.beginPath();
 
 		// It's a button. A big, orange button.
 		ctx.fillStyle = config.calculate_button.color;
@@ -363,7 +368,7 @@ function updateCanvas(nodes) {
 			calculateY(config.calculate_button.position[1]) + 1.35 * config.calculate_button.height * config.scale / 2
 		);
 
-		ctx.stroke();
+		ctx.stroke();*/
 		ctx.beginPath();
 
 		// It's another button. Another big, orange button.
@@ -384,6 +389,7 @@ function updateCanvas(nodes) {
 		);
 
 		ctx.stroke();
+		/*ctx.beginPath();
 
 		// Oh, hey, guess what it is? It's yet another button. Yet another big, orange button.
 		ctx.fillStyle = config.calculate_button.color;
@@ -402,7 +408,7 @@ function updateCanvas(nodes) {
 			calculateY(config.calculate_button.position[1]) + 1.1 * config.calculate_button.height * config.calculate_button.scale * config.scale + 1.35 * config.calculate_button.height * config.scale / 2
 		);
 
-		ctx.stroke();
+		ctx.stroke();*/
 	}
 }
 
@@ -589,14 +595,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
 							node.state = (node.state + 1) % Object.keys(node_states).length;
 						}
 					} else {
-						node.belong = (node.belong + 1) % factions.length;
+						let current_faction_index = factions.findIndex((faction) => faction.id === node.belong);
+						node.belong = factions[(current_faction_index + 1) % factions.length].id;
 					}
 
 					found = true;
 				}
 			}
 
-			// Maybe the calculate button was clicked instead.
+			/*// Maybe the calculate button was clicked instead.
 			if(!found) {
 				let x_min = calculateX(config.calculate_button.position[0]);
 				let x_max = x_min + config.calculate_button.width * config.calculate_button.scale * config.scale;
@@ -610,7 +617,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 					updateCanvas(data_copy);
 					return;
 				}
-			}
+			}*/
 
 			// Maybe the turn button was clicked instead.
 			if(!found) {
@@ -630,7 +637,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 				}
 			}
 
-			// Maybe the commit turn button was clicked instead.
+			/*// Maybe the commit turn button was clicked instead.
 			if(!found) {
 				let x_min = calculateX(config.calculate_button.position[0]) + 0.25 * config.calculate_button.width * config.calculate_button.scale * config.scale / 2;
 				let x_max = x_min + 0.75 * config.calculate_button.width * config.calculate_button.scale * config.scale;
@@ -655,7 +662,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 					updateCanvas(data);
 					found = true;
 				}
-			}
+			}*/
 		}
 
 		updateCanvas(data);
@@ -673,7 +680,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			}
 		}
 
-		// Maybe the calculate button is being hovered over instead.
+		/*// Maybe the calculate button is being hovered over instead.
 		if(!found) {
 			let x_min = calculateX(config.calculate_button.position[0]);
 			let x_max = x_min + config.calculate_button.width * config.calculate_button.scale * config.scale;
@@ -683,7 +690,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			if(x >= x_min && x <= x_max && y >= y_min && y <= y_max) {
 				found = true;
 			}
-		}
+		}*/
 
 		// Maybe the turn button is being hovered over instead.
 		if(!found) {
@@ -697,7 +704,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			}
 		}
 
-		// Maybe the commit turn button is being hovered over instead.
+		/*// Maybe the commit turn button is being hovered over instead.
 		if(!found) {
 			let x_min = calculateX(config.calculate_button.position[0]) + 0.25 * config.calculate_button.width * config.calculate_button.scale * config.scale / 2;
 			let x_max = x_min + 0.75 * config.calculate_button.width * config.calculate_button.scale * config.scale;
@@ -707,7 +714,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			if(x >= x_min && x <= x_max && y >= y_min && y <= y_max) {
 				found = true;
 			}
-		}
+		}*/
 
 		canvas.style.cursor = found ? 'pointer' : 'default';
 	});
@@ -771,7 +778,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 	document.addEventListener('paste', function(e) {
 		let state = (e.clipboardData || window.clipboardData).getData('text');
-		if(/^(\d::)?([A-Za-z]\d+(:\d){2,4},)*([A-Za-z]\d+(:\d){2,4})$/.test(state)) {
+		if(/^(\d::)?([A-Za-z]\d+(:\d{1,3}){2,4},)*([A-Za-z]\d+(:\d{1,3}){2,4})$/.test(state)) {
 			saveMapState();
 			importMapState(state);
 			updateCanvas(data);
