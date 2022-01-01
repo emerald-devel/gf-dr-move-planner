@@ -753,7 +753,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 				config.turn--;
 				if(config.turn < 1) {
-					config.turn = 8;
+					config.turn = config.turns;
 				}
 
 				found = true;
