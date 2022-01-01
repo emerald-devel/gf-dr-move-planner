@@ -62,6 +62,7 @@ const config = {
 	radius: 100,
 	margin: 50,
 	turn: 1,
+	turns: 4,
 	calculate_button: {
 		position: [-1646, -700],
 		width: 1000,
@@ -619,7 +620,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 				if(x >= x_min && x <= x_max && y >= y_min && y <= y_max) {
 					saveMapState();
 					config.turn++;
-					if(config.turn > 8) {
+					if(config.turn > config.turns) {
 						config.turn = 1;
 					}
 
