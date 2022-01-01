@@ -26,18 +26,8 @@ const factions = [
 		color: '#00EEFF'
 	},
 	{
-		id: 2,
-		name: 'KCCO',
-		color: '#EE0000'
-	},
-	{
-		id: 0,
-		name: 'Paradeus',
-		color: '#FFEE00'
-	},
-	{
 		id: 100,
-		name: 'Unknown',
+		name: 'Sangvis',
 		color: '#EE0000'
 	}
 ];
@@ -301,7 +291,7 @@ function updateCanvas(nodes) {
 		// Occupation indicator.
 		if(node.occupied) {
 			ctx.arc(calculateX(node.coordinates[0]) + config.radius, calculateY(node.coordinates[1]) - 0.8*config.radius, 0.2 * node.occupied * config.radius, 0, 2 * Math.PI, false);
-			ctx.fillStyle = node.belong === faction_map.Paradeus.id ? faction_map.Paradeus.color : faction_map.KCCO.color;
+			ctx.fillStyle = faction_map.Sangvis.color;
 			ctx.fill();
 			ctx.stroke();
 			ctx.beginPath();
