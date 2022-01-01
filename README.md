@@ -6,8 +6,7 @@ Planning without a planner is stupid. Planning with a planner will make you slig
 
 ## How to Install
 
-Just download the thing and open the index.html file in your browser. No internet required. No fancy installation tools. Just browser. If you can't figure out how to download a project from GitHub and open a file in your browser, then why the hell do you think you have the brain cells required to plan your moves in your ranking runs?
-
+Just download the thing and open the index.html file in your browser. No internet required. No fancy installation tools. Just browser. Or use [this online version](https://emerald-devel.github.io/gfl-ranking-move-planner/index.html). Whatever floats your boat.
 ## How to Use
 
 - Left-click a node to change its faction ownership.
